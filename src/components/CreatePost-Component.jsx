@@ -1,8 +1,10 @@
 import { useContext, useRef } from "react";
 import { PostListContext } from "../store/post-list-store";
+import { useNavigate } from "react-router-dom";
 
 const CreatePostComponent = () => {
   const { addPost } = useContext(PostListContext);
+  const navigate = useNavigate();
  const title= useRef('');
  const description= useRef('');
  const reaction= useRef('');
@@ -13,13 +15,30 @@ const CreatePostComponent = () => {
   const subPost=
     {
       
-      Title:title.current.value,
+      title: title.current.value,
       link:'',
-      description:description.current.value,
+      body: description.current.value,
       tags:tags.current.value.split(","),
       reactions:reaction.current.value
   }
-  addPost(subPost);
+ // addPost(subPost);
+  fetch('https://dummyjson.com/posts/add', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({    
+    userId:9,
+    title:title.current.value,
+    link:'',
+    body:description.current.value,
+    tags:tags.current.value.split(","),
+    reactions:reaction.current.value
+  })
+})
+.then(res => res.json())
+.then(data=>{
+  addPost(data);
+  navigate("/");
+});
  }
   return (
     <div className="create-post">

@@ -7,11 +7,13 @@ import CreatePostComponent from "./components/CreatePost-Component";
 import PostLayoutComponent from "./components/PostLayout-Component";
 import PostListComponent from "./components/PostList-Component";
 import PostListProvider from "./store/post-list-store";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const tabList ={
     Home:"Home",
-    CreatePost:"Create Post"
+    CreatePost:"Create Post",
+    CreateActionPost:"Create Post Action"
   }
  const [selectedTab,setSelectedTab] = useState(tabList.Home);
  const selectedTabEvent =(selectedTab)=>{
@@ -23,8 +25,7 @@ function App() {
       <div className="content">
         <HeaderComponent></HeaderComponent>   
         <PostListProvider>    
-        {selectedTab===tabList.Home && <PostListComponent></PostListComponent>}
-        {selectedTab===tabList.CreatePost && <CreatePostComponent></CreatePostComponent>}
+        <Outlet/>
         </PostListProvider>
         <FooterComponent></FooterComponent>
       </div>

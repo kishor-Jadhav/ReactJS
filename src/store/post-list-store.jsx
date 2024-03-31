@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 
 export const PostListContext = createContext({
   postList: [],
@@ -6,6 +6,7 @@ export const PostListContext = createContext({
   deletePost: () => {},
   loadPost: () => {},
 });
+
 const PostListreducer = (currentState, action) => {
   let currentPostList = currentState;
   if (action.type == "DELETE") {
@@ -47,6 +48,25 @@ const PostListProvider = ({ children }) => {
     };
     dispatchPostList(loadAction);
     
+  };
+
+ /* useEffect(() => {
+    const controller = new AbortController();
+    const {signal} = controller;
+    handleFetchPost(signal);
+    return ()=>{
+      console.log("Cleanup component...")
+      controller.abort();
+       }
+  }, []);*/
+  
+  const handleFetchPost = (signal) => {
+    fetch("https://dummyjson.com/posts",signal)
+    .then((res) => res.json())
+    .then((data) => {     
+      loadPost(data.posts);
+    });
+  
   };
   return (
     <PostListContext.Provider

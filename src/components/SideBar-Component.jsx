@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 const SideBarComponent=({selectedTab,selectedTabEvent})=>{
     const handleSelectedTab=(tabName)=>{
-        console.log(tabName)
+       // console.log(tabName)
         selectedTabEvent(tabName);
     }
     return(
@@ -12,18 +14,23 @@ const SideBarComponent=({selectedTab,selectedTabEvent})=>{
     <hr/>
     <ul className="nav nav-pills flex-column mb-auto">
       <li className="nav-item" onClick={()=>handleSelectedTab('Home')}>
-        <a  className={`nav-link  text-white  ${selectedTab=='Home' && 'active'}`} aria-current="page">
+        <Link to="/"  className={`nav-link  text-white  ${selectedTab=='Home' && 'active'}`} aria-current="page">
           <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#home"></use></svg>
           Home
-        </a>
+        </Link>
       </li>
       <li onClick={()=>handleSelectedTab('Create Post')}>
-        <a className={`nav-link  text-white  ${selectedTab=='Create Post' && 'active' }`}>
+        <Link to="/create-post" className={`nav-link  text-white  ${selectedTab=='Create Post' && 'active' }`}>
           <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#speedometer2"></use></svg>
           Create Post
-        </a>
+        </Link>
       </li>
-      
+      <li onClick={()=>handleSelectedTab('Create Post Action')}>
+        <Link to="/create-action-post" className={`nav-link  text-white  ${selectedTab=='Create Post Action' && 'active' }`}>
+          <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#speedometer2"></use></svg>
+          Create Action Post
+        </Link>
+      </li>
     </ul>
     <hr/>
     <div className="dropdown">
