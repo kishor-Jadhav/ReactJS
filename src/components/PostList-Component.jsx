@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const PostListComponent = () => {
   const objPostListContext = useContext(PostListContext);
-  const counter = useSelector((state) => state.count)
+  const {count} = useSelector((state) => state.counter);
   const postList = objPostListContext.postList;
   const loadPost = objPostListContext.loadPost;
   const loaderPost = useLoaderData();
@@ -15,7 +15,7 @@ const PostListComponent = () => {
   return (
     <>
       <div className="post-container">
-        <div>Counter - {counter}</div>
+        <div>Counter - {count}</div>
         {postList.length == 0 && (
           <EmptyPostlist ></EmptyPostlist>
         )}

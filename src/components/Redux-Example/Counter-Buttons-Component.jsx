@@ -1,21 +1,30 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
+import { counterActions, fixcounterActions } from "../../store";
 
 const CounterButtonComponent = () => {
   const useDispatchHandle = useDispatch();
   const txtval =useRef('')
   const handleClick = (action) => {
-    const actionObj = {
-      type: action,
-    };
-    useDispatchHandle(actionObj);
+   // const actionObj = {
+   //   type: action,
+   // };
+   // useDispatchHandle(actionObj);
+   if(action=="INCREMENT"){
+    useDispatchHandle(counterActions.increment());
+    useDispatchHandle(fixcounterActions.increment());
+   }else if(action=="DECREMENT"){
+    useDispatchHandle( counterActions.decrement());
+    useDispatchHandle( fixcounterActions.decrement());
+   } 
+   
   };
   const hadleOnchage=()=>{
-    const actionObj = {
-        type: 'ON_CHANGE',
-        payload:{txtVal:txtval.current.value}
-      };
-    useDispatchHandle(actionObj);
+   // const actionObj = {
+  // payload:{txtVal:txtval.current.value}
+  //   };
+   // useDispatchHandle(actionObj);
+   useDispatchHandle(counterActions.onChange({num:txtval.current.value}));
   }
   return (
     <>
