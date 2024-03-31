@@ -20,7 +20,7 @@
     top: 20;
    }
    .card-text{
-    height: 91px;
+    max-height: 244px;
    }
    .card-tags{
     margin-right: 5px;
