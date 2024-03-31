@@ -1,4 +1,7 @@
+import { useSelector } from "react-redux";
+
 const HeaderComponent = () => {
+  const counter = useSelector((state) => state.count)
   return (
     <header className="p-3 text-bg-dark">
       <div className="container">
@@ -41,7 +44,7 @@ const HeaderComponent = () => {
             </li>
             <li>
               <a href="#" className="nav-link px-2 text-white">
-                About
+                Counter - {counter}
               </a>
             </li>
           </ul>

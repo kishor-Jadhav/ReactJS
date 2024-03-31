@@ -25,7 +25,18 @@ const SideBarComponent=({selectedTab,selectedTabEvent})=>{
           Create Post
         </Link>
       </li>
-      
+      <li onClick={()=>handleSelectedTab('Create Post Action')}>
+        <Link to="/create-action-post" className={`nav-link  text-white  ${selectedTab=='Create Post Action' && 'active' }`}>
+          <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#speedometer2"></use></svg>
+          Create Action Post
+        </Link>
+      </li>
+      <li onClick={()=>handleSelectedTab('Redux Demo')}>
+        <Link to="/redux-example" className={`nav-link  text-white  ${selectedTab=='Redux Demo' && 'active' }`}>
+          <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#speedometer2"></use></svg>
+          Redux Demo
+        </Link>
+      </li>
     </ul>
     <hr/>
     <div className="dropdown">
