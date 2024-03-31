@@ -1,0 +1,42 @@
+.app-container{
+  display: flex;
+}
+.content{
+  width: 100%;
+}
+.side-bar{
+  min-height: 800px;
+}
+.post-container{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  width: 65rem;
+  .card{
+  
+   margin: 15px;
+   .btn-action{
+    position: relative;
+    top: 20;
+   }
+   .card-text{
+    height: 91px;
+   }
+   .card-tags{
+    margin-right: 5px;
+   }
+   .bg-danger{
+    background-color: white !important;
+   }
+   .alert{
+    margin-top: 5px;
+   }
+  }
+}
+
+.create-post{
+  margin: 20px;
+  width: 45rem;
+  padding: 15px;
+  border: 1px solid #ccc;
+}
