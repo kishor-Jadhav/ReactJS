@@ -50,7 +50,7 @@ const PostListProvider = ({ children }) => {
     
   };
 
- /* useEffect(() => {
+  useEffect(() => {
     const controller = new AbortController();
     const {signal} = controller;
     handleFetchPost(signal);
@@ -58,7 +58,7 @@ const PostListProvider = ({ children }) => {
       console.log("Cleanup component...")
       controller.abort();
        }
-  }, []);*/
+  }, []);
   
   const handleFetchPost = (signal) => {
     fetch("https://dummyjson.com/posts",signal)

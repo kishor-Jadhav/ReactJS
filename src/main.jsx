@@ -5,17 +5,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import CreatePostComponent from "./components/CreatePost-Component.jsx";
 import PostListComponent from "./components/PostList-Component.jsx";
-import { postLoader } from "./store/Api-Loader.jsx";
-import CreatePostActionComponent, { createPostAction } from "./components/CreatePost-Action-Component.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <PostListComponent />,loader:postLoader },
+      { path: "/", element: <PostListComponent /> },
       { path: "/create-post", element: <CreatePostComponent /> },
-      { path: "/create-action-post", element: <CreatePostActionComponent /> ,action:createPostAction},
     ],
   },
 ]);

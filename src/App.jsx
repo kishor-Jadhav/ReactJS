@@ -12,8 +12,7 @@ import { Outlet } from "react-router-dom";
 function App() {
   const tabList ={
     Home:"Home",
-    CreatePost:"Create Post",
-    CreateActionPost:"Create Post Action"
+    CreatePost:"Create Post"
   }
  const [selectedTab,setSelectedTab] = useState(tabList.Home);
  const selectedTabEvent =(selectedTab)=>{
